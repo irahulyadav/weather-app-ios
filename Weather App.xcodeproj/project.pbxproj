@@ -34,6 +34,7 @@
 		B775249323564EFF00F7AA7C /* WeatherInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B775249223564EFF00F7AA7C /* WeatherInfo.swift */; };
 		B77524952356524700F7AA7C /* WeatherResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77524942356524700F7AA7C /* WeatherResponse.swift */; };
 		B775249D23565E2800F7AA7C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B775249C23565E2800F7AA7C /* Localizable.strings */; };
+		B775249F23565FC600F7AA7C /* Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = B775249E23565FC600F7AA7C /* Extention.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +88,7 @@
 		B775249223564EFF00F7AA7C /* WeatherInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherInfo.swift; sourceTree = "<group>"; };
 		B77524942356524700F7AA7C /* WeatherResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherResponse.swift; sourceTree = "<group>"; };
 		B775249C23565E2800F7AA7C /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		B775249E23565FC600F7AA7C /* Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extention.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +152,7 @@
 				B77524362355A22700F7AA7C /* Assets.xcassets */,
 				B775243B2355A22700F7AA7C /* LaunchScreen.storyboard */,
 				B775249C23565E2800F7AA7C /* Localizable.strings */,
+				B775249E23565FC600F7AA7C /* Extention.swift */,
 			);
 			path = "Weather App";
 			sourceTree = "<group>";
@@ -363,6 +366,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B775249F23565FC600F7AA7C /* Extention.swift in Sources */,
 				B77524332355A22500F7AA7C /* Weather_App.xcdatamodeld in Sources */,
 				B77524822355AE5800F7AA7C /* WeatherInfoVC.swift in Sources */,
 				B775249323564EFF00F7AA7C /* WeatherInfo.swift in Sources */,
