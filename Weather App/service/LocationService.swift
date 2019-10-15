@@ -28,7 +28,7 @@ class LocationService: NSObject, CLLocationManagerDelegate {
     }
     
     public func alert(_ action: @escaping (Bool) -> ()) -> UIAlertController {
-        return AlertView.actionSettingAlert(title: "location_service_disabled", id: "go_to_Location_settings", action: { (open) in
+        return AlertView.actionSettingAlert(title: "location_service_disabled", id: "go_to_location_settings", action: { (open) in
             if (open) {
                 guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
                     return
@@ -81,7 +81,7 @@ class LocationService: NSObject, CLLocationManagerDelegate {
                 action(location)
                 return
             }
-            viewController.present(alert, animated: true, completion: nil)
+            viewController.present(alert, animated: false, completion: nil)
         }
     }
     
@@ -107,14 +107,14 @@ public class AlertView {
     
     public static func actionSettingAlert(title: String, id message: String, action: @escaping (Bool) -> ()) -> UIAlertController {
         
-        let alertController = UIAlertController(title: title.localized, message: message, preferredStyle: .alert)
+        let alertController = UIAlertController(title: title.localized, message: message.localized, preferredStyle: .alert)
         
         alertController.view.tintColor = UIColor.colorPrimary
         alertController.view.backgroundColor = UIColor.white
         alertController.view.layer.cornerRadius = 15
         
         let attributedMessage = NSMutableAttributedString(
-            string: "\n" + message,
+            string: "\n" + message.localized,
             attributes: [
                 NSAttributedString.Key.font: UIFont.HelveticaNeue_Regular(),
                 NSAttributedString.Key.foregroundColor: UIColor.black
@@ -133,118 +133,14 @@ public class AlertView {
             alertController.setValue(attributedTitle, forKey: "attributedTitle")
         }
         
-        alertController.addAction(setFont(action: UIAlertAction(title: "cancel".localized, style: .default, handler: { (uiAc) in
+        alertController.addAction( UIAlertAction(title: "cancel".localized, style: .default, handler: { (uiAc) in
             action(false)
-        })))
+        }))
         
-        alertController.addAction(setFont(action: UIAlertAction(title: "settings".localized, style: .default, handler: { (uiAc) in
+        alertController.addAction( UIAlertAction(title: "settings".localized, style: .default, handler: { (uiAc) in
             action(true)
-        })))
+        }))
         return alertController
-    }
-    
-    
-    public static func confirmAlert(title: String, message: String, action: (() -> ())? = nil) -> UIAlertController {
-        
-        let alertController = UIAlertController(title: title.localized, message: message, preferredStyle: .alert)
-        
-        alertController.view.tintColor = .colorPrimary
-        
-        alertController.view.backgroundColor = .white
-        alertController.view.layer.cornerRadius = 15
-        
-        let attributedMessage = NSMutableAttributedString(
-            string: "\n" + message,
-            attributes: [
-                NSAttributedString.Key.font: UIFont.HelveticaNeue_Regular(),
-                NSAttributedString.Key.foregroundColor: UIColor.black
-            ]
-        )
-        alertController.setValue(attributedMessage, forKey: "attributedMessage")
-        
-        if let title = alertController.title {
-            let attributedTitle = NSMutableAttributedString(
-                string: title,
-                attributes: [
-                    NSAttributedString.Key.font: UIFont.HelveticaNeue_Light(size: IS_IPAD ? 24.0 : 21.0),
-                    NSAttributedString.Key.foregroundColor: UIColor.colorPrimary
-                ]
-            )
-            alertController.setValue(attributedTitle, forKey: "attributedTitle")
-        }
-        alertController.addAction(setFont(action: UIAlertAction(title: "ok".localized, style: .default, handler: { (uiAc) in
-            if let action: () -> () = action {
-                action()
-            }
-            alertController.close()
-        })))
-        
-        return alertController
-    }
-    
-    public static func customAlert(title: String, attributedMessage: NSMutableAttributedString, action: (() -> ())? = nil) -> UIAlertController {
-        
-        let alertController = UIAlertController(title: title.localized, message: "", preferredStyle: .alert)
-        
-        alertController.view.tintColor = .colorPrimary
-        
-        alertController.view.backgroundColor = .white
-        alertController.view.layer.cornerRadius = 15
-        alertController.setValue(attributedMessage, forKey: "attributedMessage")
-        
-        if let title = alertController.title {
-            let attributedTitle = NSMutableAttributedString(
-                string: title,
-                attributes: [
-                    NSAttributedString.Key.font: UIFont.HelveticaNeue_Light(size: IS_IPAD ? 24.0 : 21.0),
-                    NSAttributedString.Key.foregroundColor: UIColor.colorPrimary
-                ]
-            )
-            alertController.setValue(attributedTitle, forKey: "attributedTitle")
-        }
-        alertController.addAction(setFont(action: UIAlertAction(title: "ok".localized, style: .default, handler: { (uiAc) in
-            if let action: () -> () = action {
-                action()
-            }
-            alertController.close()
-        })))
-        
-        return alertController
-    }
-    
-    private static func setFont(action: UIAlertAction) -> UIAlertAction {
-        //action.
-        //        if let title  = action.title{
-        //            let attributedTitle = NSMutableAttributedString(
-        //                string: title,
-        //                attributes: [
-        //                    NSAttributedStringKey.font : UIFont.HelveticaNeue_Light(),
-        //                    NSAttributedStringKey.foregroundColor : UIColor.colorPrimary
-        //                ]
-        //            )
-        //           // action.setValue(attributedTitle, forKey: "attributedTitle")
-        //        }
-        //        action.title = NSLocali
-        //        action.setValue(UIColor.colorPrimary, forKey: "titleTextColor")
-        //        if #available(iOS 11.0, *) {
-        //            action.accessibilityAttributedLabel = NSMutableAttributedString(
-        //                string: action.title!,
-        //                attributes: [
-        //                    NSAttributedStringKey.font : UIFont.HelveticaNeue_Light(),
-        //                    NSAttributedStringKey.foregroundColor : UIColor.colorPrimary
-        //                ]
-        //            )
-        //        }
-        //
-        //        guard let label = action.value(forKey: "label") as? UILabel else { return action }
-        //        label.attributedText = NSMutableAttributedString(
-        //                            string: action.title!,
-        //                            attributes: [
-        //                                NSAttributedStringKey.font : UIFont.HelveticaNeue_Light(),
-        //                                NSAttributedStringKey.foregroundColor : UIColor.colorPrimary
-        //                            ]
-        //                        )
-        return action
     }
 }
 
@@ -302,12 +198,12 @@ public typealias JSONObject = [String: Any]
 
 
 extension JSONSerialization {
-//    public static func jsonObject(from data: Data, options: JSONSerialization.ReadingOptions) -> throws JSONObject {
-//        if let json = (try? JSONSerialization.jsonObject(with: data, options: options)) as? JSONObject {
-//            return json
-//        }
-//        return [:]
-//    }
+    //    public static func jsonObject(from data: Data, options: JSONSerialization.ReadingOptions) -> throws JSONObject {
+    //        if let json = (try? JSONSerialization.jsonObject(with: data, options: options)) as? JSONObject {
+    //            return json
+    //        }
+    //        return [:]
+    //    }
     
     static func jsonObject(url: URL) throws -> JSONObject? {
         return try jsonObject(with: try Data(contentsOf: url), options: []) as? JSONObject

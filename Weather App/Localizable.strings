@@ -1,0 +1,13 @@
+/* 
+  Localizable.strings
+  Weather App
+
+  Created by Rahul on 2019-10-15.
+  Copyright © 2019 AppsZum. All rights reserved.
+*/
+"go_to_settings" = "Go to Settings?";
+"go_to_location_settings" = "Weather uses your telephone’s Location Service to show locale weather. Go to your telephone’s setting to allow Location Access";
+"location_service_disabled" = "Location Services Disabled";
+"cancel" = "Cancel";
+"done" = "Done";
+"settings" = "Settings";
