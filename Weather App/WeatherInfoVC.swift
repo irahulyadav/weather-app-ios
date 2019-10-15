@@ -28,6 +28,8 @@ class WeatherInfoVC: UIViewController {
     }
     let locationService = LocationService()
     
+    public var calendar = Locale(identifier:  Locale.current.languageCode == "sv" ? "sv_SE" : "en_SE").calendar
+    
     @IBOutlet weak var lblTemp: UILabel!
     @IBOutlet weak var lblPlace: UILabel!
     @IBOutlet weak var lblTime: UILabel!
@@ -44,7 +46,14 @@ class WeatherInfoVC: UIViewController {
             print(response)
             lblTemp.text = String(format: "%.0f", response.currently.temperature)
             lblPlace.text = response.timezone
-            lblTime.text = "At \("ff") it will be"
+            let dateFormat = DateFormatter()
+            dateFormat.dateFormat = "h:mm a"
+            if let timeZone = TimeZone(identifier: response.timezone){
+                calendar.timeZone = timeZone
+                dateFormat.calendar = calendar
+            }
+            
+            lblTime.text = "At \(dateFormat.string(from: Date(timeIntervalSinceNow: TimeInterval(Double(response.currently.time * 1000))))) it will be"
             ivIcon.image = UIImage(named: "\(response.currently.icon).png")
             lblProbability.text = "\(String(format: "%.02f", response.currently.precipProbability * 100)) %"
             lblHumidity.text = String(response.currently.humidity)
