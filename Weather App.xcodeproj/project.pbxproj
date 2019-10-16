@@ -91,6 +91,7 @@
 		B775249C23565E2800F7AA7C /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		B775249E23565FC600F7AA7C /* Extention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extention.swift; sourceTree = "<group>"; };
 		B77524A02356F95A00F7AA7C /* WeatherApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherApi.swift; sourceTree = "<group>"; };
+		B77524A22356FC8C00F7AA7C /* Weather App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Weather App.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +142,7 @@
 		B775242C2355A22500F7AA7C /* Weather App */ = {
 			isa = PBXGroup;
 			children = (
+				B77524A22356FC8C00F7AA7C /* Weather App.entitlements */,
 				B775249123564B4D00F7AA7C /* service */,
 				B775248E23563B5C00F7AA7C /* model */,
 				B77524602355A7BC00F7AA7C /* icons */,
@@ -542,7 +544,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Weather App/Weather App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Weather App/Preview Content\"";
 				DEVELOPMENT_TEAM = VX8JZ5GQD7;
 				ENABLE_PREVIEWS = YES;
@@ -553,6 +557,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Info.Weather-App";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -562,7 +567,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Weather App/Weather App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Weather App/Preview Content\"";
 				DEVELOPMENT_TEAM = VX8JZ5GQD7;
 				ENABLE_PREVIEWS = YES;
@@ -573,6 +580,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Info.Weather-App";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
