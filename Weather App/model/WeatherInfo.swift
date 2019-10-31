@@ -15,7 +15,7 @@ class WeatherInfo: NSObject, Decodable {
     let icon: String
     let precipIntensity: Double
     let precipProbability: Double
-    let precipType: String
+    //let precipType: String?
     let temperature: Double
     let humidity: Double
     let uvIndex: Int
@@ -34,7 +34,7 @@ class WeatherInfo: NSObject, Decodable {
         icon = try values.decode(String.self, forKey: .icon)
         precipIntensity = try values.decode(Double.self, forKey: .precipIntensity)
         precipProbability = try values.decode(Double.self, forKey: .precipProbability)
-        precipType = try values.decode(String.self, forKey: .precipType)
+      //  precipType = values.contains(.precipType) ? try values.decode(String?.self, forKey: .precipType) : nil
         temperature = try values.decode(Double.self, forKey: .temperature)
         humidity = try values.decode(Double.self, forKey: .humidity)
         uvIndex = try values.decode(Int.self, forKey: .uvIndex)
